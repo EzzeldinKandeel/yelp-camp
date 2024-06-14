@@ -1,50 +1,41 @@
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Edit Camp</title>
-    </head>
-    <body>
-        <h1>Edit Camp</h1>
-        <form
-            action="/campgrounds/<%= campground.id %>?_method=PUT"
-            method="POST">
-            <div>
-                <label for="name">Name: </label>
-                <input
-                    type="text"
-                    name="campground[title]"
-                    id="name"
-                    value="<%= campground.title %>" />
-            </div>
-            <div>
-                <label for="description">Description</label>
-                <textarea
-                    name="campground[description]"
-                    id="description"
-                    rows="5"
-                    cols="25">
+<% layout("layouts/boilerplate") %>
+
+<h1>Edit Camp</h1>
+<form action="/campgrounds/<%= campground.id %>?_method=PUT" method="POST">
+    <div>
+        <label for="name">Name: </label>
+        <input
+            type="text"
+            name="campground[title]"
+            id="name"
+            value="<%= campground.title %>" />
+    </div>
+    <div>
+        <label for="description">Description</label>
+        <textarea
+            name="campground[description]"
+            id="description"
+            rows="5"
+            cols="25">
 <%= campground.description %></textarea
-                >
-            </div>
-            <div>
-                <label for="location">Location: </label>
-                <input
-                    type="text"
-                    name="campground[location]"
-                    id="location"
-                    value="<%= campground.location %>" />
-            </div>
-            <div>
-                <label for="price">Price: </label>
-                <input
-                    type="number"
-                    name="campground[price]"
-                    id="price"
-                    value="<%= campground.price %>" />
-            </div>
-            <button>Submit</button>
-        </form>
-        <a href="/campgrounds/<%= campground.id %>">Cancel</a>
-    </body>
-</html>
+        >
+    </div>
+    <div>
+        <label for="location">Location: </label>
+        <input
+            type="text"
+            name="campground[location]"
+            id="location"
+            value="<%= campground.location %>" />
+    </div>
+    <div>
+        <label for="price">Price: </label>
+        <input
+            type="number"
+            name="campground[price]"
+            id="price"
+            value="<%= campground.price %>" />
+    </div>
+    <button>Submit</button>
+</form>
+<a href="/campgrounds/<%= campground.id %>">Cancel</a>
