@@ -20,6 +20,10 @@ async function seed() {
         const campground = new Campground({
             title: `${sample(descriptors)} ${sample(places)}`,
             location: `${city.city}, ${city.state}`,
+            price: Math.floor(Math.random() * 300) + 50,
+            image: "https://images.pexels.com/photos/1687845/pexels-photo-1687845.jpeg",
+            description:
+                "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem autem consequatur magni animi facilis, odit numquam culpa nisi magnam totam molestias corrupti mollitia iste placeat, minima quidem sequi, similique voluptatum.",
         });
         await campground.save();
     }
