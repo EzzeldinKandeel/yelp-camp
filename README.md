@@ -6,3 +6,4 @@ It's a full-stack web application, so far using the following technologies:
   - MongoDB
   - Mongoose
   - ejs
+  - Bootstrap
