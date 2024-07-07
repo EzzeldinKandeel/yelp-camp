@@ -6,7 +6,8 @@
     <form
         action="/campgrounds/<%= campground.id %>?_method=PUT"
         method="POST"
-        class="col-lg-8 offset-lg-2 col-xl-6 offset-xl-3">
+        class="col-lg-8 offset-lg-2 col-xl-6 offset-xl-3 needs-validation"
+        novalidate>
         <div class="mb-3">
             <label for="name" class="form-label">Name</label>
             <input
@@ -14,7 +15,8 @@
                 class="form-control"
                 id="name"
                 name="campground[title]"
-                value="<%= campground.title %>" />
+                value="<%= campground.title %>"
+                required />
         </div>
         <div class="mb-3">
             <label for="location" class="form-label">Location</label>
@@ -23,7 +25,8 @@
                 class="form-control"
                 id="location"
                 name="campground[location]"
-                value="<%= campground.location %>" />
+                value="<%= campground.location %>"
+                required />
         </div>
         <div class="mb-3">
             <label for="description" class="form-label">Description</label>
@@ -31,7 +34,8 @@
                 class="form-control"
                 id="description"
                 rows="3"
-                name="campground[description]">
+                name="campground[description]"
+                required>
 <%= campground.description %></textarea
             >
         </div>
@@ -44,7 +48,8 @@
                     class="form-control"
                     id="price"
                     name="campground[price]"
-                    value="<%= campground.price %>" />
+                    value="<%= campground.price %>"
+                    required />
             </div>
         </div>
         <div class="mb-3">
@@ -54,7 +59,8 @@
                 class="form-control"
                 id="image"
                 name="campground[image]"
-                value="<%= campground.image %>" />
+                value="<%= campground.image %>"
+                required />
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
         <a

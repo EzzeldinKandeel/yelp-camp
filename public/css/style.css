@@ -1,18 +1,6 @@
-/* body {
-    min-height: 100vh;
-}
-
-.card {
-    border: 2px solid var(--bs-body-color);
-}
-.card-img-top {
-    height: 60%;
-    object-fit: cover;
-}
-
-.custom-nav {
-    border-bottom: 2px solid var(--bs-body-color);
-} */
 .d-contents {
     display: contents;
+}
+.error-alert {
+    max-width: 70ch;
 }
