@@ -1,7 +1,7 @@
 <% layout("layouts/boilerplate") %>
 
 <div class="row">
-    <div class="card col-lg-8 offset-lg-2 p-0 my-5">
+    <div class="card col-lg-6 offset-lg-3 p-0 my-5">
         <img src="<%= campground.image %>" class="card-img-top" />
         <div class="card-body">
             <h5 class="card-title"><%= campground.title %></h5>
@@ -11,7 +11,13 @@
             <li class="list-group-item"><%= campground.location %></li>
             <li class="list-group-item">$<%= campground.price %> per week</li>
         </ul>
-        <div class="card-body">
+        <div class="card-body d-flex gap-2 align-items-center flex-wrap">
+            <button
+                class="btn btn-warning"
+                data-bs-toggle="modal"
+                data-bs-target="#review-modal">
+                Leave a review
+            </button>
             <a
                 href="/campgrounds/<%= campground.id %>/edit"
                 class="btn btn-warning"
@@ -20,9 +26,96 @@
             <form
                 action="/campgrounds/<%= campground.id %>?_method=DELETE"
                 method="POST"
-                class="d-inline">
+                class="d-contents">
                 <button class="btn btn-danger">Delete camp</button>
             </form>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="review-modal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">
+                    New review
+                </h1>
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form
+                    class="mb-0 needs-validation"
+                    action="/campgrounds/<%= campground.id %>/reviews"
+                    method="POST"
+                    novalidate>
+                    <div>
+                        <label class="col-form-label">Rating:</label>
+                        <input
+                            type="radio"
+                            class="btn-check"
+                            name="review[rating]"
+                            value="1"
+                            id="rating-1-star"
+                            autocomplete="off" />
+                        <label class="btn" for="rating-1-star">1</label>
+                        <input
+                            type="radio"
+                            class="btn-check"
+                            name="review[rating]"
+                            value="2"
+                            id="rating-2-stars"
+                            autocomplete="off" />
+                        <label class="btn" for="rating-2-stars">2</label>
+                        <input
+                            type="radio"
+                            class="btn-check"
+                            name="review[rating]"
+                            value="3"
+                            id="rating-3-stars"
+                            autocomplete="off" />
+                        <label class="btn" for="rating-3-stars">3</label>
+                        <input
+                            type="radio"
+                            class="btn-check"
+                            name="review[rating]"
+                            value="4"
+                            id="rating-4-stars"
+                            autocomplete="off" />
+                        <label class="btn" for="rating-4-stars">4</label>
+                        <input
+                            type="radio"
+                            class="btn-check"
+                            name="review[rating]"
+                            value="5"
+                            id="rating-5-stars"
+                            autocomplete="off"
+                            checked />
+                        <label class="btn" for="rating-5-stars">5</label>
+                    </div>
+                    <div class="mb-3">
+                        <label for="review-body" class="col-form-label"
+                            >Review Body:</label
+                        >
+                        <textarea
+                            class="form-control"
+                            id="review-body"
+                            name="review[body]"
+                            required></textarea>
+                    </div>
+                    <div class="modal-footer pb-0 pe-0">
+                        <button
+                            type="reset"
+                            class="btn btn-danger"
+                            data-bs-dismiss="modal">
+                            Cancel
+                        </button>
+                        <button class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>
