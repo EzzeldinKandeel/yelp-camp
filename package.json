@@ -9,6 +9,7 @@
   "author": "Ezzeldin Kandeel",
   "license": "ISC",
   "dependencies": {
+    "bootstrap-icons": "^1.11.3",
     "ejs": "^3.1.10",
     "ejs-mate": "^4.0.0",
     "express": "^4.19.2",
