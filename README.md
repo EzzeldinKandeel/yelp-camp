@@ -8,3 +8,4 @@ It's a full-stack web application, so far using the following technologies:
   - ejs
   - Bootstrap
   - joi
+  - Passport.js
