@@ -24,6 +24,7 @@ async function seed() {
             image: "https://images.pexels.com/photos/1687845/pexels-photo-1687845.jpeg",
             description:
                 "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem autem consequatur magni animi facilis, odit numquam culpa nisi magnam totam molestias corrupti mollitia iste placeat, minima quidem sequi, similique voluptatum.",
+            author: "66a78017159e30cdd8c7ce85"
         });
         await campground.save();
     }
