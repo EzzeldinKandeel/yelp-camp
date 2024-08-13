@@ -52,16 +52,6 @@
                     required />
             </div>
         </div>
-        <div class="mb-3">
-            <label for="image" class="form-label">Image URL</label>
-            <input
-                type="url"
-                class="form-control"
-                id="image"
-                name="campground[image]"
-                value="<%= campground.image %>"
-                required />
-        </div>
         <button type="submit" class="btn btn-primary">Submit</button>
         <a
             href="/campgrounds/<%= campground.id %>"

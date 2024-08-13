@@ -4,38 +4,40 @@
     <div class="row mt-1 mb-5 g-5">
         <div class="col-lg-6">
             <div class="card">
-                <img src="<%= campground.image %>" class="card-img-top" />
-                <div class="card-body">
-                    <h1 class="card-title">
-                        <%= campground.title %>
-                    </h1>
-                    <p class="card-text">
-                        <%= campground.description %>
-                    </p>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">
-                        <%= campground.location %>
-                    </li>
-                    <li class="list-group-item">
-                        $<%= campground.price %> per week
-                    </li>
-                </ul>
-                <div class="card-body d-flex gap-2 align-items-center flex-wrap">
-                    <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#review-modal">
-                        Leave a review
-                    </button>
-                    <% if (campground.author.id===currentUser?.id) { %>
-                        <a href="/campgrounds/<%= campground.id %>/edit" class="btn btn-warning">Edit camp</a>
-                        <form action="/campgrounds/<%= campground.id %>?_method=DELETE" method="POST"
-                            class="d-contents">
-                            <button class="btn btn-danger">Delete camp</button>
-                        </form>
-                        <% } %>
-                </div>
-                <div class="card-footer d-flex align-items-baseline">
-                    <small class="text-body-secondary">Created by&nbsp;<%= campground.author.username %></small>
-                </div>
+                <% if (!campground.images.length) { %>
+                    <img src="/SVGs/undraw_camping_noc8.svg" class="card-img-top" />
+                <% } %>
+                    <div class="card-body">
+                        <h1 class="card-title">
+                            <%= campground.title %>
+                        </h1>
+                        <p class="card-text">
+                            <%= campground.description %>
+                        </p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <%= campground.location %>
+                        </li>
+                        <li class="list-group-item">
+                            $<%= campground.price %> per week
+                        </li>
+                    </ul>
+                    <div class="card-body d-flex gap-2 align-items-center flex-wrap">
+                        <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#review-modal">
+                            Leave a review
+                        </button>
+                        <% if (campground.author.id===currentUser?.id) { %>
+                            <a href="/campgrounds/<%= campground.id %>/edit" class="btn btn-warning">Edit camp</a>
+                            <form action="/campgrounds/<%= campground.id %>?_method=DELETE" method="POST"
+                                class="d-contents">
+                                <button class="btn btn-danger">Delete camp</button>
+                            </form>
+                            <% } %>
+                    </div>
+                    <div class="card-footer d-flex align-items-baseline">
+                        <small class="text-body-secondary">Created by&nbsp;<%= campground.author.username %></small>
+                    </div>
 
             </div>
         </div>
