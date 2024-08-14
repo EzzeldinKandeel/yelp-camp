@@ -1,0 +1,24 @@
+<% layout("layouts/boilerplate") %>
+
+<h1 class="text-center mt-5 mb-3"><%= campground.title %> - Images</h1>
+<form action="/campgrounds/<%= campground.id %>/images?_method=PUT" method="POST" enctype="multipart/form-data">
+    <a 
+        href="/campgrounds/<%= campground.id %>"
+        class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover me-3"
+    >Exit</a>
+    <button type="submit" class="btn btn-primary">Apply Changes</button>
+    <div class="my-3 d-flex gap-3 align-items-baseline col-md-8 col-lg-6 col-xl-4">
+        <label for="images" class="form-label flex-shrink-0">Add Images</label>
+        <input class="form-control" type="file" id="images" name="images" multiple>
+    </div>
+    <% if (!campground.images.length) { %>
+        <h2 class="text-center text-secondary-emphasis">No images.</h2>    
+    <% } else { %>
+        <div class="d-flex gap-3">
+            <% campground.images.forEach(image => { %>
+                <img src="<%= image.thumbnail %>" class="img-thumbnail">
+            <% }) %>
+        </div>
+    <% } %>
+
+</form>

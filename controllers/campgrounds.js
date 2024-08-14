@@ -38,7 +38,7 @@ module.exports = {
     },
     update: async (req, res) => {
         const { id } = req.params;
-        await Campground.findByIdAndUpdate(id, req.body.campground);
+        await Campground.findByIdAndUpdate(id, { ...req.body.campground });
         req.flash("success", "Edit submitted.");
         res.redirect(`/campgrounds/${id}`);
     },
@@ -46,5 +46,22 @@ module.exports = {
         await Campground.findByIdAndDelete(req.params.id);
         req.flash("success", "Campground deleted.");
         res.redirect("/campgrounds");
+    },
+    renderImages: async (req, res) => {
+        const campground = await Campground.findById(req.params.id);
+        if (!campground) {
+            req.flash("error", "Campground does not exist");
+            return res.redirect("/campgrounds");
+        }
+        res.render("campgrounds/images", { campground });
+    },
+    updateImages: async (req, res) => {
+        const { id } = req.params;
+        const campground = await Campground.findById(id);
+        const images = req.files.map(f => ({ url: f.path, filename: f.filename }));
+        campground.images.push(...images);
+        await campground.save();
+        req.flash("success", "Successfully applied changes.");
+        res.redirect(`/campgrounds/${id}/images`);
     }
 };

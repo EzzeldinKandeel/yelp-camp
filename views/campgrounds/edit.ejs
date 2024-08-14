@@ -3,60 +3,58 @@
 <h1 class="text-center mt-5 mb-3">New Campground</h1>
 
 <div class="row">
-    <form
-        action="/campgrounds/<%= campground.id %>?_method=PUT"
+    <form 
+        action="/campgrounds/<%= campground.id %>?_method=PUT" 
         method="POST"
-        class="col-lg-8 offset-lg-2 col-xl-6 offset-xl-3 needs-validation"
-        novalidate>
+        class="col-lg-8 offset-lg-2 col-xl-6 offset-xl-3 needs-validation" 
+        novalidate
+    >
         <div class="mb-3">
             <label for="name" class="form-label">Name</label>
-            <input
-                type="text"
-                class="form-control"
-                id="name"
+            <input 
+                type="text" 
+                class="form-control" 
+                id="name" 
                 name="campground[title]"
-                value="<%= campground.title %>"
+                value="<%= campground.title %>" 
                 required />
         </div>
         <div class="mb-3">
             <label for="location" class="form-label">Location</label>
-            <input
-                type="text"
-                class="form-control"
-                id="location"
+            <input 
+                type="text" 
+                class="form-control" 
+                id="location" 
                 name="campground[location]"
-                value="<%= campground.location %>"
+                value="<%= campground.location %>" 
                 required />
         </div>
         <div class="mb-3">
             <label for="description" class="form-label">Description</label>
-            <textarea
-                class="form-control"
-                id="description"
-                rows="3"
-                name="campground[description]"
-                required>
-<%= campground.description %></textarea
-            >
+            <textarea class="form-control" id="description" rows="3" name="campground[description]" required>
+                <%= campground.description %>
+            </textarea>
         </div>
         <div class="mb-3">
             <label for="price" class="form-label">Price per week</label>
             <div class="input-group">
                 <span class="input-group-text">$</span>
-                <input
-                    type="number"
-                    class="form-control"
-                    id="price"
+                <input 
+                    type="number" 
+                    class="form-control" 
+                    id="price" 
                     name="campground[price]"
-                    value="<%= campground.price %>"
+                    value="<%= campground.price %>" 
                     required />
             </div>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-        <a
-            href="/campgrounds/<%= campground.id %>"
-            class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover ms-3"
-            >Cancel</a
-        >
+        <div class="d-flex align-items-baseline">
+            <a href="/campgrounds/<%= campground.id %>/images" class="btn btn-info me-auto">Add or remove images</a>
+            <a 
+                href="/campgrounds/<%= campground.id %>"
+                class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover me-3"
+            >Cancel</a>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
     </form>
 </div>
