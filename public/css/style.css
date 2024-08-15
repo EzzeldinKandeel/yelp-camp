@@ -4,3 +4,8 @@
 .error-alert {
     max-width: 70ch;
 }
+.camp-show-page-img {
+    max-height: 400px;
+    object-fit: cover;
+    aspect-ratio: 4/3;
+}

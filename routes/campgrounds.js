@@ -18,7 +18,7 @@ router.route("/:id")
     .delete(authenticatedAction, isCampgroundAuthor, catchAsync(campgrounds.delete));
 router.get("/:id/edit", authenticatedAction, isCampgroundAuthor, campgrounds.renderUpdate);
 router.route("/:id/images")
-    .get(catchAsync(campgrounds.renderImages))
+    .get(authenticatedAction, isCampgroundAuthor, catchAsync(campgrounds.renderImages))
     .put(authenticatedAction, isCampgroundAuthor, upload.array("images"), catchAsync(campgrounds.updateImages));
 
 module.exports = router;
