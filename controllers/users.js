@@ -2,10 +2,10 @@ const User = require("../models/user");
 
 module.exports = {
     renderSignup: (req, res) => {
-        res.render("users/signup");
+        res.render("users/signup", { title: "Sign Up" });
     },
     renderSignin: (req, res) => {
-        res.render("users/signin");
+        res.render("users/signin", { title: "Sign In" });
     },
     signout: (req, res) => {
         req.logout(err => {

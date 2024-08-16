@@ -4,10 +4,10 @@ const {cloudinary} = require("../cloudinary");
 module.exports = {
     index: async (req, res) => {
         const campgrounds = await Campground.find({});
-        res.render("campgrounds", { campgrounds });
+        res.render("campgrounds", { campgrounds, title: "All Campgrounds" });
     },
     renderCreate: (req, res) => {
-        res.render("campgrounds/new");
+        res.render("campgrounds/new", { title: "New Campground" });
     },
     renderUpdate: async (req, res) => {
         const campground = await Campground.findById(req.params.id);
@@ -15,7 +15,7 @@ module.exports = {
             req.flash("error", "Campground does not exist");
             return res.redirect("/campgrounds");
         }
-        res.render("campgrounds/edit", { campground });
+        res.render("campgrounds/edit", { campground, title: `Edit "${campground.title}"` });
     },
     read: async (req, res) => {
         const campground = await Campground.findById(req.params.id).populate({
@@ -28,7 +28,7 @@ module.exports = {
             req.flash("error", "Campground does not exist");
             return res.redirect("/campgrounds");
         }
-        res.render("campgrounds/show", { campground });
+        res.render("campgrounds/show", { campground, title: `"${campground.title}"` });
     },
     create: async (req, res) => {
         const campground = new Campground(req.body.campground);
@@ -54,7 +54,7 @@ module.exports = {
             req.flash("error", "Campground does not exist");
             return res.redirect("/campgrounds");
         }
-        res.render("campgrounds/images", { campground });
+        res.render("campgrounds/images", { campground, title: `"${campground.title}" Images` });
     },
     updateImages: async (req, res) => {
         const { id } = req.params;
